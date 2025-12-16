@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://800fijm1pjt"]
 
-[ext_resource type="Script" uid="uid://ctco52noo8kqi" path="res://Scripts/Items/RecolectableItem_2d.gd" id="1_cv485"]
+[ext_resource type="Script" uid="uid://ctco52noo8kqi" path="res://Scripts/Items/RecolectableItem.gd" id="1_cv485"]
 [ext_resource type="Texture2D" uid="uid://dddx0fwcid8d2" path="res://assets/Items/Cereza.png" id="2_0phv4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ck8yp"]
@@ -14,3 +14,5 @@ texture = ExtResource("2_0phv4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ck8yp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -254,5 +254,5 @@ position = Vector2(1639, 644)
 position = Vector2(866, 64)
 script = ExtResource("38_aya6m")
 
-[node name="Area2D" parent="." instance=ExtResource("39_w3ltm")]
-position = Vector2(377, 475)
+[node name="RecolectableItem" parent="." instance=ExtResource("39_w3ltm")]
+position = Vector2(451, 531)

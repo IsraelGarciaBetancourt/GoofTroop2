@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://0vbhm7s72iou" path="res://assets/players/Goofy/Goofy_Hands/Goofy_Hands_Up_Up.png" id="1_bubex"]
 [ext_resource type="Texture2D" uid="uid://bs2j58nv5naq5" path="res://assets/players/Goofy/Goofy_Stop/Goofy_stop.png" id="1_k4jc3"]
-[ext_resource type="Script" path="res://Scripts/Players/GoofyController.gd" id="1_s63fl"]
+[ext_resource type="Script" uid="uid://btm8be3iixuqe" path="res://Scripts/Players/GoofyController.gd" id="1_s63fl"]
 [ext_resource type="Texture2D" uid="uid://ce5thgnhk4uke" path="res://assets/players/Goofy/Goofy_Kicking/Goofy_Kicking_Right.png" id="2_40tgh"]
 [ext_resource type="Texture2D" uid="uid://bw1mi0onujeb2" path="res://assets/players/Goofy/Goofy_Walk/Goofy_Walk_Down.png" id="3_2wtbo"]
 [ext_resource type="Texture2D" uid="uid://2nxywf504smq" path="res://assets/players/Goofy/Goofy_Walk/Goofy_Walk_Right.png" id="4_41fo3"]
@@ -989,27 +989,27 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n1k1e"]
 _data = {
-"Goofy_Hands_Up": SubResource("Animation_asirq"),
-"Goofy_Hands_Up_Left": SubResource("Animation_kg4v8"),
-"Goofy_Hands_Up_Right": SubResource("Animation_e13ls"),
-"Goofy_Hands_Up_Up": SubResource("Animation_ddhtn"),
-"Goofy_Hands_Up_Walk_Down": SubResource("Animation_h5seu"),
-"Goofy_Hands_Up_Walk_Left": SubResource("Animation_nxwdu"),
-"Goofy_Hands_Up_Walk_Right": SubResource("Animation_34tck"),
-"Goofy_Hands_Up_Walk_Up": SubResource("Animation_xu6fl"),
-"Goofy_Kicking_Down": SubResource("Animation_lv6jm"),
-"Goofy_Kicking_Left": SubResource("Animation_is08d"),
-"Goofy_Kicking_Right": SubResource("Animation_yf8vc"),
-"Goofy_Kicking_Up": SubResource("Animation_cqte0"),
-"Goofy_Stop": SubResource("Animation_nk36c"),
-"Goofy_Stop_Left": SubResource("Animation_hjpsa"),
-"Goofy_Stop_Right": SubResource("Animation_cb1nb"),
-"Goofy_Stop_Up": SubResource("Animation_vhnom"),
-"Goofy_Walk_Down": SubResource("Animation_47k81"),
-"Goofy_Walk_Left": SubResource("Animation_xkkko"),
-"Goofy_Walk_Right": SubResource("Animation_tu42r"),
-"Goofy_Walk_Up": SubResource("Animation_y6ctu"),
-"RESET": SubResource("Animation_g6sa7")
+&"Goofy_Hands_Up": SubResource("Animation_asirq"),
+&"Goofy_Hands_Up_Left": SubResource("Animation_kg4v8"),
+&"Goofy_Hands_Up_Right": SubResource("Animation_e13ls"),
+&"Goofy_Hands_Up_Up": SubResource("Animation_ddhtn"),
+&"Goofy_Hands_Up_Walk_Down": SubResource("Animation_h5seu"),
+&"Goofy_Hands_Up_Walk_Left": SubResource("Animation_nxwdu"),
+&"Goofy_Hands_Up_Walk_Right": SubResource("Animation_34tck"),
+&"Goofy_Hands_Up_Walk_Up": SubResource("Animation_xu6fl"),
+&"Goofy_Kicking_Down": SubResource("Animation_lv6jm"),
+&"Goofy_Kicking_Left": SubResource("Animation_is08d"),
+&"Goofy_Kicking_Right": SubResource("Animation_yf8vc"),
+&"Goofy_Kicking_Up": SubResource("Animation_cqte0"),
+&"Goofy_Stop": SubResource("Animation_nk36c"),
+&"Goofy_Stop_Left": SubResource("Animation_hjpsa"),
+&"Goofy_Stop_Right": SubResource("Animation_cb1nb"),
+&"Goofy_Stop_Up": SubResource("Animation_vhnom"),
+&"Goofy_Walk_Down": SubResource("Animation_47k81"),
+&"Goofy_Walk_Left": SubResource("Animation_xkkko"),
+&"Goofy_Walk_Right": SubResource("Animation_tu42r"),
+&"Goofy_Walk_Up": SubResource("Animation_y6ctu"),
+&"RESET": SubResource("Animation_g6sa7")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pyk8u"]
@@ -1318,13 +1318,10 @@ hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_n1k1e")
+&"": SubResource("AnimationLibrary_n1k1e")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_n1k1e")
-}
 tree_root = SubResource("AnimationNodeStateMachine_v7vb5")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/kicking = false
