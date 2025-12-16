@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://c8l3fwfb4yrxv"]
+[gd_scene load_steps=43 format=3 uid="uid://c8l3fwfb4yrxv"]
 
 [ext_resource type="Script" uid="uid://cyaido74imi48" path="res://Scripts/Stages/Stage1_Controller.gd" id="1_ckbdl"]
 [ext_resource type="PackedScene" uid="uid://bhvpx244t3dfo" path="res://Scenes/TileMap/tmStage1.tscn" id="1_sct7h"]
@@ -38,6 +38,7 @@
 [ext_resource type="Script" uid="uid://clkgjbt0gid85" path="res://Scripts/Importants/DebugHelperController.gd" id="37_xas22"]
 [ext_resource type="Script" uid="uid://sv11spaeoogd" path="res://Scripts/Objects/RejaController.gd" id="38_aya6m"]
 [ext_resource type="PackedScene" uid="uid://2sfrfnvq66ki" path="res://Scenes/Objects/Reja.tscn" id="38_hnkom"]
+[ext_resource type="PackedScene" uid="uid://800fijm1pjt" path="res://Scenes/Importants/RecolectableItem.tscn" id="39_w3ltm"]
 
 [sub_resource type="Animation" id="Animation_e0wl5"]
 length = 0.001
@@ -127,8 +128,10 @@ volume_db = 10.0
 
 [node name="LightningFlash" type="TextureRect" parent="Efectos"]
 modulate = Color(1, 1, 1, 0)
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -32.0
+offset_top = -98.0
+offset_right = 1888.0
+offset_bottom = 982.0
 texture = ExtResource("35_dmr35")
 
 [node name="PlayerController" type="CharacterBody2D" parent="."]
@@ -250,3 +253,6 @@ position = Vector2(1639, 644)
 [node name="Reja" parent="." instance=ExtResource("38_hnkom")]
 position = Vector2(866, 64)
 script = ExtResource("38_aya6m")
+
+[node name="Area2D" parent="." instance=ExtResource("39_w3ltm")]
+position = Vector2(377, 475)
