@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Goof Troop 2 Tesoro Perdido"
-run/main_scene="res://Scenes/Rooms/stage_1.tscn"
+run/main_scene="uid://d38aqrgaehprj"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
