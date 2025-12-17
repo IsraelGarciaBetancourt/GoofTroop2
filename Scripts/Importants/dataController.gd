@@ -11,7 +11,7 @@ var coins: int = 0:
 			coins = max_coins
 		dataChange.emit()
 
-var max_coins: int = 99: 
+var max_coins: int = 6: 
 	get:
 		return max_coins
 	set(value):
