@@ -11,6 +11,7 @@ var readyPressFBallon: ActionArea
 var nearest_object: ActionableObjects
 
 func _ready():
+	add_to_group("player")
 	animationTree.active =  true
 	movement_speed = 400.0 
 	move_left = "ui_left2"
