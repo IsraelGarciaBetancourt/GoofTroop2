@@ -7,11 +7,16 @@ func _ready():
 	match idItem:
 		1:
 			$Sprite2D.texture = preload("res://assets/Items/Cereza.png")
-			
-func _on_body_entered(body:Node2D):
+		2:
+			$Sprite2D.texture = preload("res://assets/Items/Diamante_Rojo.png")
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.name != "Goofy":
+		return
+
 	var dataNode = get_node("/root/Main_Stage/DataController")
-	if(body.name == "Goofy"):
-		match idItem:
-			1: 
-				dataNode.coins = value
-				queue_free()
+
+	match idItem:
+		1:
+			dataNode.add_coins(value)
+			queue_free()

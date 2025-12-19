@@ -1,21 +1,32 @@
 extends Node
 
-signal dataChange 
+signal dataChange
 
-var coins: int = 0:
+var vida: int = 1
+var _coins: int = 1
+var _max_coins: int = 6
+
+var coins: int:
 	get:
-		return coins
+		return _coins
 	set(value):
-		coins += clamp(value,1,max_coins)
-		if(coins >= max_coins):
-			coins = max_coins
+		_coins = clamp(value, 0, _max_coins)
 		dataChange.emit()
 
-var max_coins: int = 6: 
+var max_coins: int:
 	get:
-		return max_coins
+		return _max_coins
 	set(value):
-		max_coins = max(value,max_coins)
-		dataChange.emit();
-				
-	
+		_max_coins = max(value, 0)
+		_coins = clamp(_coins, 0, _max_coins)
+		dataChange.emit()
+
+func check_max_coins() -> void:
+	if coins >= max_coins:
+		coins = 1
+		vida += 1
+		dataChange.emit()
+
+func add_coins(amount: int) -> void:
+	coins = _coins + amount
+	check_max_coins()

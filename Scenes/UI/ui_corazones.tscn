@@ -1,0 +1,147 @@
+[gd_scene load_steps=11 format=3 uid="uid://dridawjnpsxxn"]
+
+[ext_resource type="Texture2D" uid="uid://6ukoyoayhj8" path="res://assets/UI/Corazones.png" id="1_y41pw"]
+
+[sub_resource type="Animation" id="Animation_ildpk"]
+resource_name = "0_corazones"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UICorazonesAnimationPlayer/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+
+[sub_resource type="Animation" id="Animation_788h6"]
+resource_name = "1_corazones"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UICorazonesAnimationPlayer/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_3i0cn"]
+resource_name = "2_corazones"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UICorazonesAnimationPlayer/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_kjb4g"]
+resource_name = "3_corazones"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UICorazonesAnimationPlayer/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_dtx13"]
+resource_name = "4_corazones"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UICorazonesAnimationPlayer/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_7301e"]
+resource_name = "5_corazones"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UICorazonesAnimationPlayer/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_njmx1"]
+resource_name = "6_corazones"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UICorazonesAnimationPlayer/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_6y5p7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UICorazonesAnimationPlayer/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vh0rn"]
+_data = {
+&"0_corazones": SubResource("Animation_ildpk"),
+&"1_corazones": SubResource("Animation_788h6"),
+&"2_corazones": SubResource("Animation_3i0cn"),
+&"3_corazones": SubResource("Animation_kjb4g"),
+&"4_corazones": SubResource("Animation_dtx13"),
+&"5_corazones": SubResource("Animation_7301e"),
+&"6_corazones": SubResource("Animation_njmx1"),
+&"RESET": SubResource("Animation_6y5p7")
+}
+
+[node name="UICorazonesAnimationPlayer" type="AnimationPlayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_vh0rn")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(583, 112)
+scale = Vector2(0.7720588, 0.77205884)
+texture = ExtResource("1_y41pw")
+hframes = 7
+frame = 6

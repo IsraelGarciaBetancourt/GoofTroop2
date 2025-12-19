@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3bco2c4g2ylu"]
+
+[ext_resource type="Texture2D" uid="uid://dddx0fwcid8d2" path="res://assets/Items/Cereza.png" id="1_8mboc"]
+
+[node name="CerezaCounter" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(64, 90)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+position = Vector2(32, 32)
+texture = ExtResource("1_8mboc")
+
+[node name="Label" type="Label" parent="Panel/Sprite2D"]
+offset_left = -18.0
+offset_top = 31.0
+offset_right = 22.0
+offset_bottom = 54.0
+text = "000"

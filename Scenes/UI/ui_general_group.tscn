@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://5tfht5fd06vs"]
+
+[ext_resource type="Script" uid="uid://js0mjdwd8hfm" path="res://Scripts/UI/uiController.gd" id="1_h5mcw"]
+[ext_resource type="PackedScene" uid="uid://c3bco2c4g2ylu" path="res://Scenes/UI/CerezaCounter.tscn" id="1_rwbar"]
+[ext_resource type="Texture2D" uid="uid://djci7wo8nad7d" path="res://assets/UI/UI_Goofy.png" id="2_7g3q6"]
+[ext_resource type="PackedScene" uid="uid://cqjw0ythwfyrw" path="res://Scenes/UI/ui_corazones_animation_player.tscn" id="3_7g3q6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7g3q6"]
+font_size = 50
+
+[node name="UIGeneralGroup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h5mcw")
+
+[node name="UIGoofy" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 715.9669
+offset_bottom = 196.0
+
+[node name="Fondo" type="Sprite2D" parent="UIGoofy"]
+position = Vector2(346.97437, 94)
+scale = Vector2(0.7948718, 0.7948718)
+texture = ExtResource("2_7g3q6")
+
+[node name="UICorazones" type="Node2D" parent="UIGoofy"]
+
+[node name="UICorazonesAnimationPlayer" parent="UIGoofy/UICorazones" instance=ExtResource("3_7g3q6")]
+
+[node name="LabelVidas" type="Label" parent="UIGoofy"]
+layout_mode = 0
+offset_left = 255.0
+offset_top = 23.0
+offset_right = 295.0
+offset_bottom = 92.0
+text = "1"
+label_settings = SubResource("LabelSettings_7g3q6")
+
+[node name="CerezaCounter" parent="." instance=ExtResource("1_rwbar")]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 32.0
+offset_right = 470.0
+offset_bottom = 122.0
