@@ -255,11 +255,6 @@ position = Vector2(1639, 644)
 position = Vector2(866, 64)
 script = ExtResource("38_aya6m")
 
-[node name="RecolectableItem" parent="." instance=ExtResource("39_w3ltm")]
-position = Vector2(451, 531)
-idItem = 1
-value = 2
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UIGeneralGroup" parent="CanvasLayer" instance=ExtResource("40_b0syg")]
@@ -268,7 +263,27 @@ offset_top = 25.0
 offset_right = 35.0
 offset_bottom = 25.0
 
-[node name="RecolectableItem2" parent="." instance=ExtResource("39_w3ltm")]
-position = Vector2(622, 508)
-idItem = 1
+[node name="RecolectableItem5" parent="." instance=ExtResource("39_w3ltm")]
+position = Vector2(869, 411)
+idItem = 2
 value = 3
+
+[node name="RecolectableItem" parent="." instance=ExtResource("39_w3ltm")]
+position = Vector2(447, 496)
+idItem = 1
+value = 1
+
+[node name="RecolectableItem2" parent="." instance=ExtResource("39_w3ltm")]
+position = Vector2(555, 497)
+idItem = 1
+value = 1
+
+[node name="RecolectableItem3" parent="." instance=ExtResource("39_w3ltm")]
+position = Vector2(720, 462)
+idItem = 1
+value = 1
+
+[node name="RecolectableItem4" parent="." instance=ExtResource("39_w3ltm")]
+position = Vector2(889, 554)
+idItem = 1
+value = 1

@@ -18,6 +18,7 @@ grow_vertical = 2
 script = ExtResource("1_h5mcw")
 
 [node name="UIGoofy" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 715.9669
 offset_bottom = 196.0

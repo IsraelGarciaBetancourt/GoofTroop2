@@ -20,3 +20,6 @@ func _on_body_entered(body: Node2D) -> void:
 		1:
 			dataNode.add_coins(value)
 			queue_free()
+		2:
+			dataNode.add_coins(value)
+			queue_free()

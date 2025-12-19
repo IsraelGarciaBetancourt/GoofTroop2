@@ -3,8 +3,8 @@ extends Node
 signal dataChange
 
 var vida: int = 1
-var _coins: int = 1
-var _max_coins: int = 6
+var _coins: int = 0
+var _max_coins: int = 7
 
 var coins: int:
 	get:
@@ -23,7 +23,7 @@ var max_coins: int:
 
 func check_max_coins() -> void:
 	if coins >= max_coins:
-		coins = 1
+		coins = 0
 		vida += 1
 		dataChange.emit()
 
