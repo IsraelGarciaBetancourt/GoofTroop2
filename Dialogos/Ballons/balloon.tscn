@@ -1,13 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://27odh5fbh4ae"]
+[gd_scene load_steps=25 format=3 uid="uid://27odh5fbh4ae"]
 
-[ext_resource type="Script" path="res://Dialogos/Ballons/balloon.gd" id="1_36de5"]
+[ext_resource type="Script" uid="uid://duvfpexsavrqt" path="res://Dialogos/Ballons/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
-[ext_resource type="Texture2D" uid="uid://cnt2fyd6mfgq2" path="res://Dialogos/Ballons/DialoguePanel.png" id="2_g34uh"]
-[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
-[ext_resource type="Shader" path="res://Dialogos/Shaders/portrait_shader.gdshader" id="3_n1nbg"]
+[ext_resource type="Texture2D" uid="uid://brgp2mwfllff5" path="res://assets/dialogosUI/DialoguePanel.png" id="2_tufbr"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
+[ext_resource type="Texture2D" uid="uid://s1x366i3h03l" path="res://assets/dialogosUI/Personajes/Goofy/Goofy_Talk_5.png" id="3_bdnjn"]
+[ext_resource type="Shader" uid="uid://bv6ub38bkt7r6" path="res://Dialogos/Shaders/portrait_shader.gdshader" id="3_n1nbg"]
+[ext_resource type="Texture2D" uid="uid://bu2gegk2f1sqb" path="res://assets/dialogosUI/Personajes/Goofy/Goofy_Talk_1.png" id="4_k1um7"]
+[ext_resource type="Texture2D" uid="uid://dnjybvijoe7bh" path="res://assets/dialogosUI/Personajes/Goofy/Goofy_Talk_2.png" id="5_gfxg7"]
+[ext_resource type="FontFile" uid="uid://dnycagpkmygpo" path="res://Dialogos/Fuentes/DePixelHalbfett.ttf" id="5_orfaq"]
+[ext_resource type="Texture2D" uid="uid://bnmjxgv3megk3" path="res://assets/dialogosUI/Personajes/Goofy/Goofy_Talk_3.png" id="6_5l570"]
+[ext_resource type="Texture2D" uid="uid://bta2ur5oltttf" path="res://assets/dialogosUI/Personajes/Goofy/Goofy_Talk_4.png" id="7_iuat8"]
+[ext_resource type="Texture2D" uid="uid://cwlqo48eta5vd" path="res://assets/dialogosUI/Cuadro.png" id="7_k1um7"]
+[ext_resource type="Texture2D" uid="uid://b668iilsqx8vk" path="res://assets/dialogosUI/Personajes/Goofy/Goofy_Talk_6.png" id="8_tc28p"]
+[ext_resource type="Texture2D" uid="uid://y6bbi63qkhyt" path="res://assets/dialogosUI/Personajes/Goofy/Goofy_Talk_7.png" id="9_vp74g"]
+[ext_resource type="Texture2D" uid="uid://dd8j8eitdyevo" path="res://assets/dialogosUI/Personajes/Goofy/Goofy_Talk_8.png" id="10_8pftl"]
+[ext_resource type="Texture2D" uid="uid://c665qfuy7hirh" path="res://assets/dialogosUI/Personajes/Goofy/Goofy_Talk_9.png" id="11_i6rxw"]
+[ext_resource type="Texture2D" uid="uid://dsh362o3t8l05" path="res://assets/dialogosUI/Personajes/Goofy/Goofy_Talk_10.png" id="12_jyvj3"]
+[ext_resource type="Texture2D" uid="uid://dpmvmyf1v4unv" path="res://assets/dialogosUI/Personajes/Goofy/Goofy_Talk_11.png" id="13_cltm6"]
+[ext_resource type="Texture2D" uid="uid://btoejr7kysm5w" path="res://assets/dialogosUI/Personajes/Goofy/Goofy_Talk_12.png" id="14_3gad1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rbk5d"]
-texture = ExtResource("2_g34uh")
+texture = ExtResource("2_tufbr")
 
 [sub_resource type="Theme" id="Theme_k60hw"]
 default_font_size = 30
@@ -20,6 +34,58 @@ shader_parameter/darkness = 0.6
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fs5g8"]
 shader = ExtResource("3_n1nbg")
 shader_parameter/darkness = 0.6
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rcd0c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_bdnjn")
+}],
+"loop": false,
+"name": &"Goofy_Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_k1um7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gfxg7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5l570")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_iuat8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bdnjn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tc28p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vp74g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8pftl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_i6rxw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_jyvj3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_cltm6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_3gad1")
+}],
+"loop": true,
+"name": &"Goofy_Talk",
+"speed": 12.0
+}]
 
 [node name="ExampleBalloon" type="CanvasLayer"]
 layer = 100
@@ -78,10 +144,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 503.0
-offset_top = 650.0
-offset_right = -494.0
-offset_bottom = -96.0
+offset_left = 481.0
+offset_top = 298.0
+offset_right = -436.0
+offset_bottom = -518.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -102,6 +168,9 @@ scroll_active = false
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/line_separation = 35
+theme_override_fonts/normal_font = ExtResource("5_orfaq")
+theme_override_font_sizes/normal_font_size = 40
 text = "Dialogue..."
 
 [node name="Responses" type="MarginContainer" parent="Balloon"]
@@ -111,10 +180,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -165.0
-offset_top = -891.0
-offset_right = 476.0
-offset_bottom = -487.0
+offset_left = -108.0
+offset_top = -1202.0
+offset_right = 533.0
+offset_bottom = -798.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -129,6 +198,18 @@ response_template = NodePath("ResponseExample")
 [node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu"]
 layout_mode = 2
 text = "Response example"
+
+[node name="MarcoPortrait" type="Sprite2D" parent="Balloon"]
+position = Vector2(218, 497)
+texture = ExtResource("7_k1um7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Balloon"]
+position = Vector2(219, 511)
+scale = Vector2(1.1057143, 1.1057143)
+sprite_frames = SubResource("SpriteFrames_rcd0c")
+animation = &"Goofy_Talk"
+frame = 3
+frame_progress = 0.17224926
 
 [node name="VoicePlayer" type="AudioStreamPlayer2D" parent="."]
 volume_db = 10.0

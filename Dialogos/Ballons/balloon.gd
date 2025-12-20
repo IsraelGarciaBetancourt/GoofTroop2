@@ -33,7 +33,7 @@ var dialogue_line: DialogueLine:
 		balloon.focus_mode = Control.FOCUS_ALL
 		balloon.grab_focus()
 
-		# Si el diálogo ha terminado, cerrar el globo de diálogo
+		# Si el diálogo ha terminado, cerrar el globo
 		if not next_dialogue_line:
 			queue_free()
 			return
@@ -41,52 +41,60 @@ var dialogue_line: DialogueLine:
 		if not is_node_ready():
 			await ready
 
+		# Asignar la línea actual
 		dialogue_line = next_dialogue_line
-		# Llamar a la función para verificar eventos especiales
+
+		# Eventos especiales
 		check_special_events()
+
+		# Nombre del personaje
 		character_label.visible = not dialogue_line.character.is_empty()
 		character_label.text = tr(dialogue_line.character, "dialogue")
 
-		# Obtener el próximo hablante si existe
-		var upcoming_speaker = ""
-		if dialogue_line.next_id != "": 
-			var next_line = await resource.get_next_dialogue_line(dialogue_line.next_id, temporary_game_states)
-			if next_line:
-				upcoming_speaker = next_line.character
+		# Próximo hablante (sin adelantar diálogo)
+		upcoming_speaker = dialogue_line.character
+
+		# 🔊 Reproducir audio EXACTAMENTE al entrar la línea
+		play_voice_clip(current_title, dialogue_line.id)
 
 		# Inicializar personajes activos solo en la primera línea
 		if active_characters.is_empty():
 			active_characters.append(dialogue_line.character)
-			if upcoming_speaker != "":
-				active_characters.append(upcoming_speaker)
-			else:
-				active_characters.append("Max" if dialogue_line.character != "Max" else "Goofy")
+			active_characters.append(
+				"Max" if dialogue_line.character != "Max" else "Goofy"
+			)
 
-		# Actualizar los retratos según el personaje actual y el próximo
+		# Actualizar retratos
 		update_portraits(dialogue_line.character, upcoming_speaker)
-		play_voice_clip(current_title, dialogue_line.id)
 
+		# Preparar texto
 		dialogue_label.hide()
 		dialogue_label.dialogue_line = dialogue_line
 
+		# Preparar respuestas
 		responses_menu.hide()
-		responses_menu.set_responses(dialogue_line.responses)
+		responses_menu.responses = dialogue_line.responses
 
-		# Mostrar el globo de diálogo
+		# Mostrar globo
 		balloon.show()
 		will_hide_balloon = false
 
+		# Mostrar texto
 		dialogue_label.show()
 		if not dialogue_line.text.is_empty():
 			dialogue_label.type_out()
 			await dialogue_label.finished_typing
 
-		# Verificar si hay respuestas o si el diálogo debe avanzar automáticamente
+		# Flujo del diálogo
 		if dialogue_line.responses.size() > 0:
 			balloon.focus_mode = Control.FOCUS_NONE
 			responses_menu.show()
 		elif dialogue_line.time != "":
-			var time = dialogue_line.text.length() * 0.02 if dialogue_line.time == "auto" else dialogue_line.time.to_float()
+			var time := (
+				dialogue_line.text.length() * 0.02
+				if dialogue_line.time == "auto"
+				else dialogue_line.time.to_float()
+			)
 			await get_tree().create_timer(time).timeout
 			next(dialogue_line.next_id)
 		else:
@@ -96,6 +104,7 @@ var dialogue_line: DialogueLine:
 
 	get:
 		return dialogue_line
+
 
 func update_portraits(speaker: String, future_speaker: String):  # Renombrado para evitar conflicto
 	if speaker not in active_characters:
@@ -130,16 +139,16 @@ func apply_shader(portrait: TextureRect, should_fade: bool):
 	tween.tween_property(mat, "shader_parameter/darkness", target_darkness, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 func play_voice_clip(dialogue_id: String, line_id: String):
-	# Convertir a número y restar 1 para corregir el desplazamiento
-	var line_number = line_id.to_int() - 1
-	var audio_path = "res://Dialogos/Audios/" + dialogue_id + "L" + str(line_number) + ".ogg"
-	
-	# Verificar si el archivo existe antes de intentar cargarlo
+	var line_number := line_id.to_int()
+	var audio_path := "res://Dialogos/Audios/%sL%d.ogg" % [dialogue_id, line_number]
+
 	if FileAccess.file_exists(audio_path):
+		voice_player.stop()
 		voice_player.stream = load(audio_path)
 		voice_player.play()
 	else:
 		print("Archivo de audio no encontrado: ", audio_path)
+
 
 func check_special_events():
 	if current_title == "E1D1" and dialogue_line.id.to_int() == 6:

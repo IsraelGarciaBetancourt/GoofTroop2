@@ -17,13 +17,24 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Signals="*res://Scripts/Importants/Signals.gd"
 DebugHelperController="*res://Scripts/Importants/DebugHelperController.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [dialogue_manager]
 
-general/balloon_path="res://Dialogos/Ballons/balloon.tscn"
+editor/new_file_template="~ this_is_a_node_title
+Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
+Nathan: Here are some choices.
+- First one
+	Nathan: You picked the first one.
+- Second one
+	Nathan: You picked the second one.
+- Start again => this_is_a_node_title
+- End the conversation => END
+Nathan: For more information see the online documentation.
+=> END"
+runtime/balloon_path="res://Dialogos/Ballons/balloon.tscn"
 
 [display]
 
