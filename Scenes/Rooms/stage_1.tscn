@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://c8l3fwfb4yrxv"]
+[gd_scene load_steps=45 format=3 uid="uid://c8l3fwfb4yrxv"]
 
 [ext_resource type="Script" uid="uid://cyaido74imi48" path="res://Scripts/Stages/Stage1_Controller.gd" id="1_ckbdl"]
 [ext_resource type="PackedScene" uid="uid://bhvpx244t3dfo" path="res://Scenes/TileMap/tmStage1.tscn" id="1_sct7h"]
@@ -40,6 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://2sfrfnvq66ki" path="res://Scenes/Objects/Reja.tscn" id="38_hnkom"]
 [ext_resource type="PackedScene" uid="uid://800fijm1pjt" path="res://Scenes/Importants/RecolectableItem.tscn" id="39_w3ltm"]
 [ext_resource type="PackedScene" uid="uid://5tfht5fd06vs" path="res://Scenes/UI/ui_general_group.tscn" id="40_b0syg"]
+[ext_resource type="PackedScene" uid="uid://dskfw3lmnnhft" path="res://Scenes/Importants/change_room.tscn" id="41_lnrej"]
 
 [sub_resource type="Animation" id="Animation_e0wl5"]
 length = 0.001
@@ -79,7 +80,7 @@ _data = {
 &"Rain": SubResource("Animation_hiv78")
 }
 
-[node name="Stage_1" type="Node2D"]
+[node name="Stage_1" type="Node2D" groups=["Room"]]
 script = ExtResource("1_ckbdl")
 
 [node name="TileMap" parent="." instance=ExtResource("1_sct7h")]
@@ -140,7 +141,7 @@ z_index = 1
 position = Vector2(-359, 4)
 script = ExtResource("3_370la")
 
-[node name="Goofy" parent="PlayerController" instance=ExtResource("1_suvoh")]
+[node name="Goofy" parent="PlayerController" groups=["Player"] instance=ExtResource("1_suvoh")]
 position = Vector2(580, 550)
 
 [node name="DebugLabels" type="Node2D" parent="."]
@@ -287,3 +288,8 @@ value = 1
 position = Vector2(889, 554)
 idItem = 1
 value = 1
+
+[node name="ChangeRoom" parent="." instance=ExtResource("41_lnrej")]
+position = Vector2(868, 193)
+scale = Vector2(4, 4)
+room_destino = "uid://dms7x67ne4fpl"

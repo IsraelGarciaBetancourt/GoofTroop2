@@ -1,21 +1,30 @@
-extends CharacterBody2D  # Usamos CharacterBody2D en lugar de StaticBody2D
+extends CharacterBody2D
 
 @onready var actionAreaStarblock = $ActionAreaStarblock
-@onready var reja: Node2D = get_node("/root/Stage_1/Reja")
-@onready var reja_scene = preload("res://Scenes/Objects/Reja.tscn")  
+@onready var reja: Node2D = null
 
-var move_speed_vector: Vector2  
+var move_speed_vector: Vector2
 var move_speed: int = 1200
-var moving := false 
+var moving := false
 var characterWhoKicked: Node2D = null
-var initial_position: Vector2  # Almacena la posición inicial del Starblock
+var initial_position: Vector2
 var actionableStarblock = ActionableObjects.new()
 
 func _ready():
-	initial_position = global_position  # Guarda la posición inicial del bloque
+	# 🔑 Buscar la Reja dentro del Room actual
+	var room := get_tree().get_first_node_in_group("Room")
+	if room == null:
+		push_error("Starblock: No encontré el Room activo (grupo 'Room').")
+	else:
+		reja = room.get_node_or_null("Reja") as Node2D
+		if reja == null:
+			print("Starblock: Este Room no tiene Reja (ok si es otro stage).")
+
+	initial_position = global_position
 	actionAreaStarblock.body_entered.connect(check_enter_holeStarblock)
-	actionAreaStarblock.set_deferred("monitoring", false)  # Desactiva detección al inicio
+	actionAreaStarblock.set_deferred("monitoring", false)
 	actionAreaStarblock.kicked.connect(kicked)
+
 
 func get_collision_shape_rect(obj):
 	var shape_owner = obj.find_child("CollisionShapeHoleStarblock2D")  # Asegúrate de que el nombre es correcto

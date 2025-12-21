@@ -7,5 +7,5 @@
 
 [node name="Stage_1" parent="." instance=ExtResource("1_ibgdm")]
 
-[node name="DataController" parent="." instance=ExtResource("2_do076")]
+[node name="DataController" parent="." groups=["DataController"] instance=ExtResource("2_do076")]
 position = Vector2(262, 442)

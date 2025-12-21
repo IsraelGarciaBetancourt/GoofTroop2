@@ -19,4 +19,3 @@ func abrir():
 		DebugHelperController.debugInfoMessageLabel("Todos los Starblocks requeridos están en los hoyos, abriendo " + self.name)
 		await get_tree().create_timer(0.3).timeout
 		queue_free() 	
-

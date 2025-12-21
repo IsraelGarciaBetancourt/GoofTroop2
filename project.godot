@@ -53,6 +53,12 @@ folder_colors={
 "res://assets/": "red"
 }
 
+[global_group]
+
+Player=""
+Room=""
+DataController=""
+
 [input]
 
 ui_left2={

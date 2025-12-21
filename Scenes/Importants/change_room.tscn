@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dskfw3lmnnhft"]
+
+[ext_resource type="Script" uid="uid://bomluejenwfx2" path="res://Scripts/Importants/ChangeRoom.gd" id="1_ikyk5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8as4"]
+size = Vector2(42, 27)
+
+[node name="ChangeRoom" type="Area2D"]
+script = ExtResource("1_ikyk5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_d8as4")
+debug_color = Color(0.9887628, 0, 0.30357113, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

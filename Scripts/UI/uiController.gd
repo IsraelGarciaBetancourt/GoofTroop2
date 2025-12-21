@@ -1,12 +1,18 @@
 extends Control
 
-@onready var dataNode: Node = get_node("/root/Main_Stage/DataController")
+@onready var dataNode := get_node_or_null("/root/Main_Stage/DataController")
 @onready var lbCoin: Label = $CerezaCounter/Panel/Sprite2D/Label
 @onready var animationCorazon: AnimationPlayer = $UIGoofy/UICorazones/UICorazonesAnimationPlayer
 @onready var lbVidas: Label = $UIGoofy/LabelVidas
 
 func _ready() -> void:
-	dataNode.dataChange.connect(updateData)
+	if dataNode == null:
+		push_error("No encontré /root/Main_Stage/DataController (¿se destruyó Main_Stage?)")
+		return
+
+	if not dataNode.dataChange.is_connected(updateData):
+		dataNode.dataChange.connect(updateData)
+
 	updateData()
 
 func updateData() -> void:
