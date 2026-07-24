@@ -19,7 +19,7 @@ func _ready():
 	
 	# Cargar el audio del océano y activarlo en bucle
 	var ocean_stream = load("res://assets/effects/soundeffects/Ocean.ogg")
-	ocean_stream.set_loop(true)  # Activa el loop en el recurso de audio
+	ocean_stream.loop = true  # Activa el loop en el recurso de audio
 	ocean_audio.stream = ocean_stream
 	ocean_audio.volume_db = 3  # Ajusta el volumen si es necesario
 	ocean_audio.play()
@@ -52,7 +52,7 @@ func _on_special_event_triggered(dialogue_name, line_number):
 
 	# Cargar el audio de la tormenta y activar el loop
 	var storm_stream = load("res://assets/effects/soundeffects/Storm.ogg")
-	storm_stream.set_loop(true)  # Activar loop en el recurso de audio
+	storm_stream.loop = true  # Activar loop en el recurso de audio
 	storm_audio.stream = storm_stream
 	storm_audio.volume_db = -40  # Comenzar con volumen bajo
 	storm_audio.play()

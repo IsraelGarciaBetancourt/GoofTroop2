@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://k32yxsyeubph"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/Harpoon.gd" id="1_harpoon"]
+[ext_resource type="Script" path="res://Scripts/Objects/HarpoonTip.gd" id="2_tip"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tip"]
+radius = 12.0
+
+[node name="Harpoon" type="Node2D"]
+script = ExtResource("1_harpoon")
+
+[node name="ChainLine" type="Line2D" parent="."]
+width = 5.0
+default_color = Color(0.584314, 0.584314, 0.584314, 1)
+texture_mode = 1
+
+[node name="TipArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("2_tip")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TipArea"]
+shape = SubResource("CircleShape2D_tip")
+debug_color = Color(0.85, 0.35, 0.35, 0.42)
+
+[connection signal="area_entered" from="TipArea" to="." method="_on_tip_area_area_entered"]
+[connection signal="body_entered" from="TipArea" to="." method="_on_tip_area_body_entered"]

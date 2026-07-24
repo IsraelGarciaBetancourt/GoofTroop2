@@ -9,9 +9,11 @@ extends PlayerController
 var nearestActionable: ActionArea
 var readyPressFBallon: ActionArea
 var nearest_object: ActionableObjects
+var carried_box: ThrowableBox = null
+var harpoon_scene = preload("res://Scenes/Objects/Harpoon.tscn")
 
 func _ready():
-	add_to_group("player")
+	add_to_group("Player")
 	animationTree.active =  true
 	movement_speed = 400.0 
 	move_left = "ui_left2"
@@ -27,9 +29,6 @@ func _physics_process(_delta: float) -> void:
 	debugLabels()
 
 func animate_movement():
-	if Input.is_action_just_pressed("ui_mainInteract"):
-		handsUp = !handsUp
-
 	if (movement_direction == Vector2.ZERO and velocity.length() == 0):
 		change_direction_to_vertical = false
 		change_direction_to_horizontal = false
@@ -68,6 +67,26 @@ func animate_movement():
 			prev_orthogonal_direction = prev_direction
 
 func _unhandled_input(event: InputEvent):
+	if event.is_action_pressed("ui_mainInteract"):
+		if carried_box == null:
+			# Intentar levantar una caja cercana
+			var nearestObj = check_nearest_object()
+			if nearestObj and nearestObj.get_parent() is ThrowableBox:
+				carried_box = nearestObj.get_parent() as ThrowableBox
+				carried_box.pick_up(self)
+				handsUp = true
+		else:
+			# Lanzar la caja cargada
+			var dir = get_facing_direction()
+			carried_box.throw(dir)
+			carried_box = null
+			handsUp = false
+
+	if event.is_action_pressed("ui_auxKey") and carried_box == null and canMove and not kicking:
+		var harpoon = harpoon_scene.instantiate() as Harpoon
+		get_parent().add_child(harpoon)
+		harpoon.launch(self, get_facing_direction())
+
 	if event.is_action_pressed("ui_kicking") && nearestActionable != null:
 		if is_instance_valid(nearestActionable):
 			nearestActionable.emit_signal("actionated")
@@ -119,8 +138,8 @@ func check_actionables() -> void:
 		readyPressFBallon = nextActionable
 
 		# Emitir la señal mientras el jugador esté cerca
-		if readyPressFBallon.has_signal("ready"):
-			readyPressFBallon.emit_signal("ready")
+		if readyPressFBallon.has_signal("player_approached"):
+			readyPressFBallon.emit_signal("player_approached")
 
 	else:
 		# Si no hay ningún objeto cerca, ocultamos el ícono

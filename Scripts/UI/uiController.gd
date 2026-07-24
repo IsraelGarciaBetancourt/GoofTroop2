@@ -1,6 +1,6 @@
 extends Control
 
-@onready var dataNode := get_node_or_null("/root/Main_Stage/DataController")
+@onready var dataNode := get_tree().get_first_node_in_group("DataController")
 @onready var lbCoin: Label = $CerezaCounter/Panel/Sprite2D/Label
 @onready var animationCorazon: AnimationPlayer = $UIGoofy/UICorazones/UICorazonesAnimationPlayer
 @onready var lbVidas: Label = $UIGoofy/LabelVidas

@@ -8,7 +8,7 @@ var resource = load("res://Dialogos/dialogue.dialogue")
 
 func _ready():
 	area.actionated.connect(actioned)
-	area.ready.connect(readies)
+	area.player_approached.connect(readies)
 	area.hideballoon.connect(noreadies)
 
 func actioned():

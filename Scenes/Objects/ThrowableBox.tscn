@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dknxb3lmnnhft"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/ThrowableBox.gd" id="1_ofd0t"]
+[ext_resource type="Texture2D" uid="uid://cr05tkxwad3du" path="res://assets/objects/Barrel.png" id="2_barrel"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_box"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grab"]
+size = Vector2(72, 72)
+
+[node name="ThrowableBox" type="CharacterBody2D" groups=["Throwable"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_ofd0t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_barrel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_box")
+debug_color = Color(0.16, 0.63, 0.41, 0.42)
+
+[node name="GrabArea" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+shape = SubResource("RectangleShape2D_grab")
+debug_color = Color(0.85, 0.35, 0.35, 0.42)

@@ -14,24 +14,13 @@ func _on_body_entered(body: Node) -> void:
 
 	cambiando = true
 	set_deferred("monitoring", false) # evita warning en Godot 4.5
-	call_deferred("_cambiar_room")
-
-func _cambiar_room() -> void:
-	var room_actual := get_tree().get_first_node_in_group("Room")
-	if room_actual == null:
-		push_error("No encontré el Room actual (grupo 'Room'). Pon el grupo en el root del stage.")
-		return
-
-	var main_stage := room_actual.get_parent()
-	if main_stage == null:
-		push_error("El Room actual no tiene parent")
-		return
-
-	var packed := load(room_destino) as PackedScene
-	if packed == null:
-		push_error("No se pudo cargar la escena: " + room_destino)
-		return
-
-	var nuevo_room := packed.instantiate()
-	main_stage.add_child(nuevo_room)
-	room_actual.queue_free()
+	
+	# Buscar el nodo raíz de la habitación actual (ancestro en el grupo "Room")
+	var room_actual: Node = self
+	while room_actual != null and not room_actual.is_in_group("Room"):
+		room_actual = room_actual.get_parent()
+		
+	if room_actual:
+		Signals.change_room_with_fade(room_actual, room_destino)
+	else:
+		push_error("No encontré el Room actual (grupo 'Room') al intentar cambiar de sala.")

@@ -30,3 +30,10 @@ func check_max_coins() -> void:
 func add_coins(amount: int) -> void:
 	coins = _coins + amount
 	check_max_coins()
+
+func take_damage() -> void:
+	vida -= 1
+	if vida < 0:
+		vida = 1
+		coins = 0
+	dataChange.emit()
